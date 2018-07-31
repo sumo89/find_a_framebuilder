@@ -26,7 +26,8 @@ $('.select').change(function(){
 		var results = response.results;
 		$.each(results, function(key, value){
 			var builders = value;
-			$('.tileWrap').addClass("hasPics");
+			if (builders.area === areaVal){
+				$('.tileWrap').addClass("hasPics");
 				$('#tileWrap').append(
 				'<div class="tile clearfix" id="tile">'+
 					'<div class="detailsWrap">'+
@@ -35,7 +36,7 @@ $('.select').change(function(){
 						'</div>' + 
 						'<div class="description" id="description">'+ builders.description + '</div><br>' + 
 						'<div class="material" id="material"> Materials:  ' + builders.material + '</div>' + 
-				 		'<div class="specialism" id="specialism"> Frame types:  ' + builders.specialism + '</div>' + 
+						'<div class="specialism" id="specialism"> Frame types:  ' + builders.specialism + '</div>' + 
 						'<div class="details" id="details">' + builders.location + '<br>' +  builders.phone + '<br>'+
 							'<a href="mailto:' + builders.email + '">'+ builders.email + '</a>'+
 						'</div>' + 
@@ -44,9 +45,10 @@ $('.select').change(function(){
 						'</div>'+
 					'</div>'+
 					'<div class="pictures" id="pictures">' + 
-				 		'<img src="' + builders.pictures + '">' + 
-					 '</div>'+
+						'<img src="' + builders.pictures + '">' + 
+					'</div>'+
 				'</div>');
+			}
 		});
 		$(document).scrollTop(300);
 	}});
